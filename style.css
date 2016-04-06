@@ -1,0 +1,48 @@
+.principal {
+  /* Chrome, Safari, Opera */
+  /* Standard syntax */
+}
+.principal .noAnimation {
+  position: relative;
+  top: 400px;
+  left: 40%;
+}
+.principal .animation {
+  position: relative;
+  -webkit-animation-name: moveItToTheTop;
+  /* Chrome, Safari, Opera */
+  -webkit-animation-duration: 4s;
+  /* Chrome, Safari, Opera */
+  animation-name: moveItToTheTop;
+  animation-duration: 2s;
+  left: 40%;
+  top: 0px;
+}
+@-webkit-keyframes moveItToTheTop {
+  0% {
+    top: 400px;
+  }
+  10% {
+    top: 390px;
+  }
+  95% {
+    top: 5px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+@keyframes moveItToTheTop {
+  0% {
+    top: 400px;
+  }
+  10% {
+    top: 390px;
+  }
+  95% {
+    top: 5px;
+  }
+  100% {
+    top: 0px;
+  }
+}
