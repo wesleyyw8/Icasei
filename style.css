@@ -46,3 +46,32 @@
     top: 0px;
   }
 }
+.principal section.section--center {
+  max-width: 860px;
+}
+.principal section > header > .material-icons {
+  font-size: 3rem;
+}
+.principal section {
+  position: relative;
+  margin-bottom: 10px;
+}
+.principal section header {
+  width: auto !important;
+}
+.principal section header img {
+  max-height: 250px;
+  max-width: 145px;
+}
+.principal .detailsButton {
+  position: absolute;
+  z-index: 99;
+  top: 8px;
+  right: 8px;
+}
+.marginBottom0 {
+  margin-bottom: 0px;
+}
+.paddingBottom0 {
+  padding-bottom: 0px;
+}
