@@ -9,7 +9,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider,$loca
 		when('/principal', {
 			templateUrl: '../views/principal.html',
 			controller: 'PrincipalController',
-			reloadOnSearch: false
+			reloadOnSearch: true
 		}).
 		otherwise({
 			redirectTo: '/principal'
@@ -28,17 +28,26 @@ app.controller('PrincipalController', ['$scope','$http', "Config", "$timeout","$
  function($scope,$http, Config, $timeout, $location){
 	$scope.animate = false;
 	$scope.isInvalid = false;
-	$scope.movieName = "batman";
 	$scope.currentPage = 1;
 	$scope.loading = false;
-
-	if (angular.isDefined($location.search().movieName) && angular.isDefined($location.search().page) )
+	$scope.movieName = "";
+	if (angular.isDefined($location.search().movieName) && angular.isDefined($location.search().page) ){
+		$scope.movieName = $location.search().movieName;
+		$scope.currentPage = parseInt($location.search().page);
+		
+		var el = document.getElementById('textFieldContainer');
+		if(el)
+    	el.className += 'is-focused';
+  	
+		$scope.animate = true;
 		populateMovies();
+	}
 	$scope.searchMovie = function(){
 		if ($scope.movieName.trim() == ""){
 			$scope.isInvalid = true;
 			return;
 		}
+		$location.search('movieName', $scope.movieName);
 		$scope.currentPage = 1;
 		$scope.animate = true;
 		$scope.loading = true;
@@ -72,7 +81,7 @@ app.controller('PrincipalController', ['$scope','$http', "Config", "$timeout","$
 		}
 	};
 	function updateUrlParams(){
-		$location.search('movieName', $scope.movieName);
+		//$location.search('movieName', $scope.movieName);
 		$location.search('page', $scope.currentPage);
 	}
 }]);

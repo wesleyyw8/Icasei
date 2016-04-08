@@ -9,7 +9,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider,$loca
 		when('/principal', {
 			templateUrl: '../views/principal.html',
 			controller: 'PrincipalController',
-			reloadOnSearch: false
+			reloadOnSearch: true
 		}).
 		otherwise({
 			redirectTo: '/principal'
