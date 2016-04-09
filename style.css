@@ -17,6 +17,14 @@
   height: 200px;
 }
 
+.detalhes .imgDetail {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
 .principal {
   /* Chrome, Safari, Opera */
   /* Standard syntax */

@@ -9,7 +9,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider,$loca
 		when('/principal', {
 			templateUrl: '../views/principal.html',
 			controller: 'PrincipalController',
-			reloadOnSearch: true
+			reloadOnSearch: false
+		}).
+		when('/detalhes/:movieId', {
+			templateUrl: '../views/detalhes.html',
+			controller: 'DetalhesController',
+			reloadOnSearch:false
 		}).
 		otherwise({
 			redirectTo: '/principal'
@@ -20,8 +25,23 @@ angular.module('iCasei').factory('Config', [function() {
 	return {
 		endpoints: {
 	    getMovies: "http://www.omdbapi.com/?s=",
-	    page: "&page="
+	    page: "&page=",
+	    getMoviesDetails: "http://www.omdbapi.com/?i="
 		}
+	};
+}]);
+app.controller('DetalhesController', ['$scope','$location',"$http", "Config","$route" ,function($scope, $location, $http, Config, $route){
+	if (angular.isDefined($route.current.params.movieId))
+		loadMovieDetails();
+	$scope.loading = false;
+	function loadMovieDetails(){
+		$scope.loading = true;
+		$http.get(Config.endpoints.getMoviesDetails + $route.current.params.movieId).then(function(data){
+			$scope.loading = false;
+			$scope.poster = data.data.Poster;
+			delete data.data.Poster;
+			$scope.movieDetail = data.data;
+		});
 	};
 }]);
 app.controller('PrincipalController', ['$scope','$http', "Config", "$timeout","$location",
@@ -83,5 +103,9 @@ app.controller('PrincipalController', ['$scope','$http', "Config", "$timeout","$
 	function updateUrlParams(){
 		//$location.search('movieName', $scope.movieName);
 		$location.search('page', $scope.currentPage);
-	}
+	};
+	$scope.moreInformation = function(id){
+		//$location.path('/detalhes/'+id);
+		$location.url('/detalhes/'+id);
+	};
 }]);

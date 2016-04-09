@@ -9,7 +9,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider,$loca
 		when('/principal', {
 			templateUrl: '../views/principal.html',
 			controller: 'PrincipalController',
-			reloadOnSearch: true
+			reloadOnSearch: false
+		}).
+		when('/detalhes/:movieId', {
+			templateUrl: '../views/detalhes.html',
+			controller: 'DetalhesController',
+			reloadOnSearch:false
 		}).
 		otherwise({
 			redirectTo: '/principal'
@@ -20,7 +25,8 @@ angular.module('iCasei').factory('Config', [function() {
 	return {
 		endpoints: {
 	    getMovies: "http://www.omdbapi.com/?s=",
-	    page: "&page="
+	    page: "&page=",
+	    getMoviesDetails: "http://www.omdbapi.com/?i="
 		}
 	};
 }]);

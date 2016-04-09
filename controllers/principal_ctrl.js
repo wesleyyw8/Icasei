@@ -57,5 +57,9 @@ app.controller('PrincipalController', ['$scope','$http', "Config", "$timeout","$
 	function updateUrlParams(){
 		//$location.search('movieName', $scope.movieName);
 		$location.search('page', $scope.currentPage);
-	}
+	};
+	$scope.moreInformation = function(id){
+		//$location.path('/detalhes/'+id);
+		$location.url('/detalhes/'+id);
+	};
 }]);
