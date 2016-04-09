@@ -21,6 +21,13 @@
         </div>
       </div>
     </section>
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" ng-if="movies.length == 0">
+      <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+        <div class="mdl-card__supporting-text marginBottom0 paddingBottom0">
+          <h1>Sem Resultados</h1>
+        </div>
+      </div>
+    </section>
     <section class="mdl-grid section--center">
       <div class="mdl-cell mdl-cell--6-col">
         <button class="mdl-button mdl-js-button mdl-button--raised"  ng-if="currentPage > 1" ng-click="previouslyPage()">
@@ -33,5 +40,6 @@
         </button>
       </div>
     </section>
+    <pre> {{movies.length || json}} </pre>
     <div class="mdl-spinner mdl-js-spinner is-active spinner" ng-if="loading == true"></div>
 </div>

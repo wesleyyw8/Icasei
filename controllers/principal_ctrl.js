@@ -30,13 +30,13 @@ app.controller('PrincipalController', ['$scope','$http', "Config", "$timeout","$
 			populateMovies();
 		},2000);
 	};
-	//$location.search('id', 123);
 	function populateMovies(){
 		$scope.movies = [];
 		$timeout(function(){
 			$scope.loading = true;
 			$http.get(Config.endpoints.getMovies+$location.search().movieName+Config.endpoints.page+$location.search().page).then(function(resp){
-				$scope.movies = resp.data.Search;
+				if (angular.isDefined(resp.data.Search))
+					$scope.movies = resp.data.Search;
 				console.log($scope.movies);
 				$scope.loading = false;
 			});
