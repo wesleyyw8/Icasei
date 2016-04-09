@@ -51,6 +51,7 @@ app.controller('PrincipalController', ['$scope','$http', "Config", "$timeout","$
 	$scope.currentPage = 1;
 	$scope.loading = false;
 	$scope.movieName = "";
+	$scope.movies = [];
 	if (angular.isDefined($location.search().movieName) && angular.isDefined($location.search().page) ){
 		$scope.movieName = $location.search().movieName;
 		$scope.currentPage = parseInt($location.search().page);
@@ -81,9 +82,9 @@ app.controller('PrincipalController', ['$scope','$http', "Config", "$timeout","$
 		$timeout(function(){
 			$scope.loading = true;
 			$http.get(Config.endpoints.getMovies+$location.search().movieName+Config.endpoints.page+$location.search().page).then(function(resp){
+				console.log(resp);
 				if (angular.isDefined(resp.data.Search))
 					$scope.movies = resp.data.Search;
-				console.log($scope.movies);
 				$scope.loading = false;
 			});
 		},0);

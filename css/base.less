@@ -16,3 +16,32 @@
 	width: 200px;
 	height: 200px;
 }
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+.tooltip .tooltiptext {
+  width: 120px;
+  color: #fff;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 999;
+  top: 20;
+  left: 5;
+  background: rgba(97,97,97,.9);
+  border-radius: 2px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  max-width: 170px;
+  padding: 8px;
+  text-align: center;
+  transition: all 0.6s ease-in-out;
+  opacity: 0;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 0.9;
+}
