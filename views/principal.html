@@ -1,5 +1,5 @@
 <div class="principal">
-		<div ng-class="[{animation: animate}, {noAnimation: !animate}]">
+		<div ng-class="[{animation: animate}, {noAnimation: !animate}, 'mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone alignCenter']">
 		  <div ng-class="['mdl-textfield', 'mdl-js-textfield', 'mdl-textfield--floating-label', {'is-invalid is-dirty': isInvalid}]" id="textFieldContainer">
 		    <input class="mdl-textfield__input" type="text" ng-model="movieName" >
 		    <label class="mdl-textfield__label" for="movieName">Digite o nome do filme...</label>
@@ -9,7 +9,7 @@
 		</div>
 
 		<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" ng-repeat="movie in movies">
-      <header class="tooltip section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+      <header class="tooltip section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color-text--white">
         <img src="{{movie.Poster}}">
         <div class="tooltiptext">
           <p>Ano: {{movie.Year}}</p>
@@ -17,7 +17,7 @@
           <p>imbdId: {{movie.imdbID}}</p>
         </div>
       </header>
-      <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+      <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--2-col-phone movieDescription">
         <div class="mdl-card__supporting-text marginBottom0 paddingBottom0">
           <h2>{{movie.Title}}</h2>
         </div>
@@ -26,7 +26,7 @@
         </div>
       </div>
     </section>
-    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" ng-if="movies.length == 0">
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" ng-if="movies.length == 0 && animate == true">
       <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-card__supporting-text marginBottom0 paddingBottom0">
           <h1>Sem Resultados</h1>
@@ -34,12 +34,12 @@
       </div>
     </section>
     <section class="mdl-grid section--center">
-      <div class="mdl-cell mdl-cell--6-col">
+      <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--6-col-phone ">
         <button class="mdl-button mdl-js-button mdl-button--raised"  ng-if="currentPage > 1" ng-click="previouslyPage()">
           Previously
         </button>
       </div>
-      <div class="mdl-cell mdl-cell--6-col alignRight">
+      <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--6-col-phone alignRight">
         <button class="mdl-button mdl-js-button mdl-button--raised"  ng-if="movies.length == 10" ng-click="nextPage()">
           Next
         </button>

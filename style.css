@@ -7,6 +7,9 @@
 .alignRight {
   text-align: right;
 }
+.alignCenter {
+  text-align: center;
+}
 .spinner {
   position: absolute;
   display: block;
@@ -59,7 +62,6 @@
 .principal .noAnimation {
   position: relative;
   top: 400px;
-  left: 40%;
 }
 .principal .animation {
   position: relative;
@@ -69,7 +71,6 @@
   /* Chrome, Safari, Opera */
   animation-name: moveItToTheTop;
   animation-duration: 2s;
-  left: 40%;
   top: 0px;
 }
 @-webkit-keyframes moveItToTheTop {
@@ -116,10 +117,17 @@
 .principal section header img {
   max-height: 250px;
   max-width: 145px;
+  vertical-align: middle;
 }
 .principal .detailsButton {
   position: absolute;
   z-index: 99;
   top: 8px;
   right: 8px;
+}
+@media only screen and (max-width: 594px) {
+  .principal .mdl-cell--2-col-phone.movieDescription {
+    width: 65% !important;
+    float: right !important;
+  }
 }
